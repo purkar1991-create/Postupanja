@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PGP Dalj</title>
+<style>
+  :root{
+    --paper:#FAF7F0;
+    --paper-dim:#F1ECE0;
+    --ink:#20262B;
+    --ink-soft:#5B6570;
+    --navy:#1C2B3A;
+    --navy-light:#2C4058;
+    --gold:#9C7A3C;
+    --line:#DCD3BE;
+    --danger:#B23A3A;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    min-height:100vh;
+  }
+
+  /* ---------- APP SWITCH ---------- */
+  #app-switch{
+    display:flex;
+    background:#121D28;
+    position:sticky;
+    top:0;
+    z-index:20;
+  }
+  .app-tab{
+    flex:1;
+    background:none;
+    border:none;
+    color:#8C97A3;
+    padding:12px 10px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    border-bottom:3px solid transparent;
+  }
+  .app-tab.active{
+    color:#fff;
+    border-bottom-color:var(--gold);
+  }
+  .app-view{ display:none; }
+  body[data-app="zakoni"] #app-zakoni{ display:block; }
+  body[data-app="schengen"] #app-schengen{ display:block; }
+
+  /* ---------- TOP BAR ---------- */
+  #topbar{
+    background:var(--navy);
+    color:#EDEAE0;
+    padding:18px 20px;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  #topbar-inner{
+    max-width:720px;
+    margin:0 auto;
+  }
+  #topbar h1{
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size:21px;
+    margin:0 0 2px 0;
+    letter-spacing:0.3px;
+  }
+  #topbar .tagline{
+    margin:0 0 14px 0;
+    font-size:11.5px;
+    color:#B9C2CC;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+  }
+  #search-box{
+    width:100%;
+    padding:9px 12px;
+    border-radius:6px;
+    border:1px solid rgba(255,255,255,0.18);
+    background:rgba(255,255,255,0.07);
+    color:#fff;
+    font-size:14px;
+  }
+  #search-box::placeholder{color:#8C97A3;}
+
+  #admin-btn{
+    width:100%;
+    margin-top:8px;
+    padding:8px 10px;
+    border-radius:6px;
+    border:1px solid rgba(255,255,255,0.18);
+    background:rgba(255,255,255,0.04);
+    color:#D7DCE2;
+    font-size:12.5px;
+    cursor:pointer;
+    text-align:left;
+  }
+  #admin-btn:hover{ background:rgba(255,255,255,0.09); }
+  #admin-btn.on{
+    background:rgba(156,122,60,0.18);
+    border-color:var(--gold);
+    color:var(--gold);
+  }
+
+  /* Sakrij sve elemente za uređivanje dok admin nije prijavljen */
+  body:not([data-admin="on"]) .admin-only{ display:none !important; }
+
+  /* ---------- CONTENT WRAPPER ---------- */
+  #content{
+    max-width:720px;
+    margin:0 auto;
+    padding:24px 20px 60px 20px;
+  }
+
+  .view{ display:none; }
+  body[data-view="laws"] #view-laws{ display:block; }
+  body[data-view="articles"] #view-articles{ display:block; }
+  body[data-view="reader"] #view-reader{ display:block; }
+
+  .back-link{
+    background:none;
+    border:none;
+    color:var(--gold);
+    font-size:13.5px;
+    font-weight:600;
+    padding:0 0 16px 0;
+    cursor:pointer;
+    display:inline-block;
+  }
+  .back-link:hover{ text-decoration:underline; }
+
+  /* ---------- LAWS LIST ---------- */
+  .section-heading{
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.6px;
+    color:var(--ink-soft);
+    margin:22px 0 8px 0;
+  }
+  .section-heading:first-child{ margin-top:0; }
+
+  #global-note-box{
+    margin-bottom:22px;
+    padding-bottom:18px;
+    border-bottom:1px solid var(--line);
+  }
+  #global-note-display{
+    background:var(--paper-dim);
+    border:1px solid var(--line);
+    border-left:3px solid var(--gold);
+    border-radius:6px;
+    padding:12px 14px;
+    font-size:14px;
+    line-height:1.6;
+    white-space:pre-wrap;
+    color:var(--ink);
+    margin-bottom:10px;
+  }
+  #global-note-edit textarea{
+    width:100%;
+    min-height:90px;
+    padding:9px 10px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    font-size:14px;
+    font-family:inherit;
+    line-height:1.5;
+    resize:vertical;
+    margin-bottom:8px;
+  }
+  #global-note-edit button{
+    padding:9px 16px;
+    background:var(--navy);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  #global-note-edit button:hover{ background:var(--navy-light); }
+
+  .list-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 16px;
+    margin-bottom:8px;
+    cursor:pointer;
+  }
+  .list-card:hover{ border-color:var(--gold); }
+  .lc-title-group{
+    flex:1;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    min-width:0;
+  }
+  .list-card .lc-title{ font-size:15px; font-weight:600; }
+  .list-card .lc-sub{ font-size:12px; color:var(--ink-soft); margin-top:3px; }
+  .list-card .lc-count{
+    font-size:11px;
+    color:var(--ink-soft);
+    background:var(--paper-dim);
+    padding:2px 9px;
+    border-radius:10px;
+    flex-shrink:0;
+    border:1px solid var(--line);
+  }
+  .empty-note{
+    color:var(--ink-soft);
+    font-size:13.5px;
+    padding:14px 2px;
+  }
+
+  #add-law-btn, #add-article-btn{
+    width:100%;
+    margin-top:6px;
+    padding:12px;
+    background:var(--gold);
+    color:#241C0E;
+    border:none;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  #add-law-btn:hover, #add-article-btn:hover{ filter:brightness(1.06); }
+  #refresh-published-btn{
+    width:100%;
+    margin-top:14px;
+    padding:10px;
+    background:#fff;
+    color:var(--navy);
+    border:1px solid var(--line);
+    border-radius:8px;
+    font-size:12.5px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  #refresh-published-btn:hover{ border-color:var(--gold); }
+
+  #backup-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:28px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+  #backup-row button{
+    flex:1 1 auto;
+    min-width:120px;
+    background:#fff;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    padding:9px 6px;
+    border-radius:6px;
+    font-size:12.5px;
+    cursor:pointer;
+  }
+  #backup-row button:hover{ border-color:var(--gold); color:var(--ink); }
+  #import-input{ display:none; }
+
+  /* ---------- ARTICLES VIEW ---------- */
+  #articles-law-title{
+    font-family: Georgia, serif;
+    font-size:23px;
+    margin:0 0 18px 0;
+  }
+
+  /* ---------- READER VIEW ---------- */
+  .r-law{
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:0.6px;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  #view-reader h2{
+    font-family: Georgia, serif;
+    font-size:25px;
+    margin:0 0 6px 0;
+    line-height:1.3;
+  }
+  .r-article-no{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:20px;
+  }
+  .r-note{
+    margin-top:24px;
+    padding:14px 16px;
+    background:var(--paper-dim);
+    border:1px solid var(--line);
+    border-left:3px solid var(--gold);
+    border-radius:6px;
+  }
+  .r-note-label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.6px;
+    color:var(--ink-soft);
+    margin-bottom:5px;
+  }
+  .r-note-text{
+    font-size:14.5px;
+    line-height:1.6;
+    white-space:pre-wrap;
+    color:var(--ink);
+  }
+  .r-text{
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size:16.5px;
+    line-height:1.75;
+    white-space:pre-wrap;
+    color:var(--ink);
+    border-top:1px solid var(--line);
+    padding-top:20px;
+  }
+  .r-pdf{
+    margin-top:18px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    align-items:flex-start;
+  }
+  .r-pdf a{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:9px 14px;
+    background:var(--paper-dim);
+    border:1px solid var(--line);
+    border-left:3px solid var(--navy);
+    border-radius:6px;
+    color:var(--navy);
+    font-size:13.5px;
+    font-weight:600;
+    text-decoration:none;
+  }
+  .r-pdf a:hover{ border-color:var(--gold); border-left-color:var(--gold); }
+  .r-pdf .pdf-github-link{
+    border-left-color:var(--gold);
+    color:var(--ink-soft);
+    font-size:12.5px;
+    font-weight:600;
+  }
+  .pdf-current{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    font-size:13px;
+    background:var(--paper-dim);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:8px 10px;
+    margin-bottom:8px;
+  }
+  .pdf-current button{
+    background:none;
+    border:none;
+    color:var(--danger);
+    font-size:12px;
+    cursor:pointer;
+    font-weight:600;
+  }
+  .reader-actions{
+    margin-top:26px;
+    display:flex;
+    gap:10px;
+  }
+  .reader-actions button{
+    padding:9px 16px;
+    border-radius:6px;
+    border:1px solid var(--line);
+    background:#fff;
+    cursor:pointer;
+    font-size:13px;
+  }
+  .reader-actions button.danger{ color:var(--danger); border-color:#E3C3C3; }
+  .reader-actions button:hover{ filter:brightness(0.97); }
+
+  /* ---------- MODAL ---------- */
+  #overlay{
+    position:fixed; inset:0;
+    background:rgba(20,24,28,0.5);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:50;
+    padding:16px;
+  }
+  #overlay.show{ display:flex; }
+  #modal{
+    background:#fff;
+    width:520px;
+    max-width:100%;
+    max-height:88vh;
+    overflow-y:auto;
+    border-radius:10px;
+    padding:26px 28px 22px 28px;
+  }
+  #modal h3{
+    font-family: Georgia, serif;
+    margin:0 0 18px 0;
+    font-size:20px;
+  }
+  .field{ margin-bottom:14px; }
+  .field label{
+    display:block;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--ink-soft);
+    margin-bottom:5px;
+  }
+  .field input[type=text], .field textarea{
+    width:100%;
+    padding:9px 10px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    font-size:14px;
+    font-family:inherit;
+  }
+  .field textarea{
+    min-height:160px;
+    resize:vertical;
+    font-family: Georgia, serif;
+    line-height:1.6;
+  }
+  .modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:20px;
+  }
+  .modal-actions button{
+    padding:9px 18px;
+    border-radius:6px;
+    border:1px solid var(--line);
+    background:#fff;
+    cursor:pointer;
+    font-size:13.5px;
+  }
+  .modal-actions button.primary{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+    font-weight:600;
+  }
+
+  #toast{
+    position:fixed;
+    bottom:22px;
+    left:50%;
+    transform:translateX(-50%);
+    background:var(--navy);
+    color:#fff;
+    padding:10px 20px;
+    border-radius:20px;
+    font-size:13px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.25s ease;
+    z-index:100;
+    max-width:90vw;
+    text-align:center;
+  }
+  #toast.show{ opacity:1; }
+
+  /* ---------- SCHENGEN CALCULATOR ---------- */
+  #schengen-topbar{
+    background:var(--navy);
+    color:#EDEAE0;
+    padding:18px 20px;
+  }
+  #schengen-topbar-inner{ max-width:720px; margin:0 auto; }
+  #schengen-topbar h1{
+    font-family: Georgia, serif;
+    font-size:21px;
+    margin:0 0 2px 0;
+  }
+  #schengen-topbar .tagline{
+    margin:0;
+    font-size:11.5px;
+    color:#B9C2CC;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+  }
+  #schengen-content{
+    max-width:720px;
+    margin:0 auto;
+    padding:24px 20px 60px 20px;
+  }
+  .ss-summary{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:18px 18px 14px 18px;
+    margin-bottom:24px;
+  }
+  .ss-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:14px;
+    padding:5px 0;
+  }
+  .ss-row strong{ font-size:15px; }
+  .ss-alert{
+    margin-top:10px;
+    padding:10px 12px;
+    border-radius:6px;
+    font-size:14px;
+    font-weight:600;
+  }
+  .ss-alert.ok{
+    background:rgba(46,91,74,0.1);
+    color:#2E5B4A;
+  }
+  .ss-alert.danger{
+    background:rgba(178,58,58,0.1);
+    color:var(--danger);
+  }
+  .trip-delete-btn{
+    background:none;
+    border:none;
+    color:var(--ink-soft);
+    font-size:16px;
+    cursor:pointer;
+    padding:2px 6px;
+    flex-shrink:0;
+  }
+  .trip-delete-btn:hover{ color:var(--danger); }
+  #print-btn, #add-trip-btn{
+    width:100%;
+    margin-top:6px;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  #add-trip-btn{ background:var(--gold); color:#241C0E; }
+  #add-trip-btn:hover{ filter:brightness(1.06); }
+  #print-btn{ background:var(--navy); color:#fff; margin-top:12px; }
+  #print-btn:hover{ background:var(--navy-light); }
+  #delete-all-trips-btn{
+    background:#fff;
+    color:var(--danger);
+    border:1px solid #E3C3C3;
+  }
+  #delete-all-trips-btn:hover{ background:rgba(178,58,58,0.06); }
+  .owner-field{ margin-bottom:22px; }
+  .owner-field label{
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--ink-soft);
+    margin-bottom:5px;
+    display:block;
+  }
+  .owner-field input{
+    width:100%;
+    padding:9px 10px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    font-size:14px;
+    font-family:inherit;
+    background:#fff;
+  }
+  @media print{
+    .owner-field label{ display:none; }
+    .owner-field input{ border:none; padding:0; font-size:16px; font-weight:600; }
+  }
+  .print-meta{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin-top:18px;
+    text-align:center;
+  }
+
+  @media print{
+    .no-print{ display:none !important; }
+    #app-switch{ display:none !important; }
+    body{ background:#fff; }
+    #schengen-topbar{ background:#fff; color:var(--ink); padding:0 0 14px 0; }
+    #schengen-topbar .tagline{ color:var(--ink-soft); }
+    .list-card{ break-inside:avoid; box-shadow:none; }
+    #access-gate{ display:none !important; }
+  }
+
+  /* ---------- ACCESS GATE ---------- */
+  #access-gate{
+    position:fixed;
+    inset:0;
+    background:var(--navy);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:200;
+    padding:20px;
+  }
+  #access-box{
+    background:#fff;
+    border-radius:12px;
+    padding:34px 30px;
+    width:340px;
+    max-width:100%;
+    text-align:center;
+  }
+  #access-box h2{
+    font-family: Georgia, serif;
+    font-size:22px;
+    margin:0 0 6px 0;
+    color:var(--ink);
+  }
+  #access-box p{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:0 0 20px 0;
+  }
+  #access-input{
+    width:100%;
+    padding:11px 12px;
+    border:1px solid var(--line);
+    border-radius:6px;
+    font-size:15px;
+    text-align:center;
+    margin-bottom:12px;
+  }
+  #access-submit{
+    width:100%;
+    padding:11px;
+    background:var(--navy);
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  #access-submit:hover{ background:var(--navy-light); }
+  #access-error{
+    color:var(--danger);
+    font-size:12.5px;
+    margin-top:10px;
+    min-height:16px;
+  }
+</style>
+</head>
+<body data-app="zakoni" data-view="laws">
+
+<div id="access-gate">
+  <div id="access-box">
+    <h2>PGP Dalj</h2>
+    <p>Unesi pristupni kod za ulazak na stranicu</p>
+    <input type="password" id="access-input" placeholder="Pristupni kod" autocomplete="off">
+    <button id="access-submit">Uđi</button>
+    <div id="access-error"></div>
+  </div>
+</div>
+
+
+<div id="app-switch" class="no-print">
+  <button class="app-tab active" data-app="zakoni">📚 Zakoni</button>
+  <button class="app-tab" data-app="schengen">🛂 Schengen 90/180</button>
+</div>
+
+<div id="app-zakoni" class="app-view">
+
+<div id="topbar">
+  <div id="topbar-inner">
+    <h1>PGP Dalj</h1>
+    <input type="text" id="search-box" placeholder="Pretraži zakone i članke...">
+    <button id="admin-btn">🛡️ Admin prijava</button>
+  </div>
+</div>
+
+<div id="content">
+
+  <!-- VIEW: popis zakona -->
+  <div class="view" id="view-laws">
+    <div id="global-note-box" style="display:none;">
+      <div class="section-heading">Napomena</div>
+      <div id="global-note-display"></div>
+      <div id="global-note-edit" class="admin-only">
+        <textarea id="global-note-input" placeholder="npr. iznosi kazni, način plaćanja, IBAN, poziv na broj..."></textarea>
+        <button id="save-global-note-btn">Spremi napomenu</button>
+      </div>
+    </div>
+    <div id="law-list"></div>
+    <button id="add-law-btn" class="admin-only">+ Novi zakon</button>
+    <div id="backup-row" class="admin-only">
+      <button id="share-btn">Podijeli</button>
+      <button id="export-btn">Izvezi (backup)</button>
+      <button id="export-github-btn" class="admin-only">Izvezi zakoni.json (za GitHub)</button>
+      <button id="download-all-pdfs-btn" class="admin-only">Preuzmi sve PDF-ove</button>
+      <button id="import-btn">Uvezi</button>
+      <input type="file" id="import-input" accept="application/json">
+    </div>
+    <button id="refresh-published-btn" class="admin-only">🔄 Učitaj objavljenu verziju (zakoni.json)</button>
+  </div>
+
+  <!-- VIEW: popis članaka unutar zakona -->
+  <div class="view" id="view-articles">
+    <button class="back-link" id="back-to-laws">← Svi zakoni</button>
+    <h2 id="articles-law-title"></h2>
+    <div id="article-list"></div>
+    <button id="add-article-btn" class="admin-only">+ Novi članak</button>
+  </div>
+
+  <!-- VIEW: tekst članka -->
+  <div class="view" id="view-reader">
+    <button class="back-link" id="back-to-articles">← Popis članaka</button>
+    <div id="reader-content"></div>
+  </div>
+
+</div>
+
+</div>
+
+<div id="app-schengen" class="app-view">
+  <div id="schengen-topbar">
+    <div id="schengen-topbar-inner">
+      <h1>Schengen kalkulator</h1>
+      <p class="tagline">Pravilo 90 od 180 dana</p>
+    </div>
+  </div>
+
+  <div id="schengen-content">
+    <div class="field owner-field">
+      <label>Ime i prezime (nije obavezno)</label>
+      <input type="text" id="owner-name" placeholder="npr. Ivan Ivić">
+    </div>
+
+    <div class="ss-summary">
+      <div class="ss-row">
+        <span>Datum unazad 180 dana od danas:</span>
+        <strong id="ss-window-start"></strong>
+      </div>
+      <div class="ss-row">
+        <span>Iskorišteno dana (zadnjih 180 dana):</span>
+        <strong id="ss-used"></strong>
+      </div>
+      <div id="ss-status"></div>
+    </div>
+
+    <div class="section-heading">Putovanja</div>
+    <div id="trip-list"></div>
+    <button id="add-trip-btn" class="no-print">+ Novo putovanje</button>
+    <button id="delete-all-trips-btn" class="no-print">Obriši sva putovanja</button>
+    <button id="print-btn" class="no-print">🖨️ Printaj / Spremi kao PDF</button>
+    <div class="print-meta" id="print-owner" style="display:none;"></div>
+    <div class="print-meta">Izvještaj generiran: <span id="print-date"></span></div>
+  </div>
+</div>
+
+
+<div id="overlay">
+  <div id="modal"></div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+(async function(){
+  // ---------- ACCESS GATE ----------
+  const ACCESS_CODE = "PgpDalj";
+  const ACCESS_KEY = "pgpdalj_access_granted";
+
+  function openApp(){
+    document.getElementById("access-gate").style.display = "none";
+  }
+
+  function tryAccess(){
+    const val = document.getElementById("access-input").value;
+    const errEl = document.getElementById("access-error");
+    if(val === ACCESS_CODE){
+      localStorage.setItem(ACCESS_KEY, "yes");
+      errEl.textContent = "";
+      openApp();
+    }else{
+      errEl.textContent = "Pogrešan kod.";
+    }
+  }
+
+  document.getElementById("access-submit").onclick = tryAccess;
+  document.getElementById("access-input").addEventListener("keydown", (e)=>{
+    if(e.key === "Enter") tryAccess();
+  });
+
+  if(localStorage.getItem(ACCESS_KEY) === "yes"){
+    openApp();
+  }
+
+  // ---------- ADMIN MODE ----------
+  const ADMIN_CODE = "1505";
+
+  function setAdmin(on){
+    document.body.setAttribute("data-admin", on ? "on" : "off");
+    const btn = document.getElementById("admin-btn");
+    btn.textContent = on ? "🛡️ Admin uključen — klikni za odjavu" : "🛡️ Admin prijava";
+    btn.classList.toggle("on", on);
+  }
+
+  document.getElementById("admin-btn").onclick = ()=>{
+    const isOn = document.body.getAttribute("data-admin") === "on";
+    if(isOn){
+      setAdmin(false);
+      renderGlobalNote();
+      showToast("Admin način isključen.");
+    }else{
+      const val = prompt("Admin lozinka:");
+      if(val === null) return;
+      if(val.trim() === ADMIN_CODE){
+        setAdmin(true);
+        renderGlobalNote();
+        showToast("Admin način uključen.");
+      }else{
+        showToast("Pogrešna lozinka.");
+      }
+    }
+  };
+  setAdmin(false);
+
+  const STORAGE_KEY = "zbirka_zakona_v1";
+  const LAST_PUBLISHED_KEY = "zbirka_zakona_last_published_v1";
+  let state = { laws: [], napomena: "" };
+  let activeLawId = null;
+  let activeArticleId = null;
+
+  function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
+
+  function adoptPublished(data){
+    state.laws = data.laws;
+    state.napomena = data.napomena || "";
+    const canonical = JSON.stringify({ laws: data.laws, napomena: state.napomena });
+    try{
+      localStorage.setItem(STORAGE_KEY, canonical);
+      localStorage.setItem(LAST_PUBLISHED_KEY, canonical);
+    }catch(e){ console.error("Greška pri spremanju objavljene verzije:", e); }
+  }
+
+  async function load(){
+    // Pokušaj dohvatiti objavljenu verziju (radi na GitHub Pages i sličnim hostinzima).
+    let published = null;
+    try{
+      const resp = await fetch("zakoni.json", { cache: "no-store" });
+      if(resp.ok){
+        const data = await resp.json();
+        if(data && Array.isArray(data.laws)) published = { laws: data.laws, napomena: data.napomena || "" };
+      }
+    }catch(e){ /* npr. lokalno otvaranje bez servera - nastavi bez objavljene verzije */ }
+
+    const draftRaw = localStorage.getItem(STORAGE_KEY);
+    const lastPublishedRaw = localStorage.getItem(LAST_PUBLISHED_KEY);
+
+    if(draftRaw){
+      const canonicalPublished = published ? JSON.stringify({ laws: published.laws, napomena: published.napomena }) : null;
+      const noLocalChanges = lastPublishedRaw !== null && draftRaw === lastPublishedRaw;
+
+      if(canonicalPublished && noLocalChanges && canonicalPublished !== lastPublishedRaw){
+        // Nema neizvezenih lokalnih izmjena, a objavljena verzija je novija -> automatski uskladi.
+        adoptPublished(published);
+        return;
+      }
+      // Inače (postoje neizvezene izmjene, ili nema nove objavljene verzije) -> zadrži lokalno stanje.
+      try{
+        state = JSON.parse(draftRaw);
+        if(!state.laws) state.laws = [];
+        if(typeof state.napomena !== "string") state.napomena = "";
+      }catch(e){
+        console.error("Greška pri učitavanju lokalnih podataka:", e);
+        if(!state.laws) state.laws = [];
+      }
+      return;
+    }
+
+    // Nema ničega lokalno (prvi posjet) -> koristi objavljenu verziju ako postoji.
+    if(published){
+      adoptPublished(published);
+      return;
+    }
+    if(!state.laws) state.laws = [];
+  }
+
+  async function loadPublished(){
+    const resp = await fetch("zakoni.json", { cache: "no-store" });
+    if(!resp.ok) throw new Error("zakoni.json nije dostupan (status " + resp.status + ")");
+    const data = await resp.json();
+    if(!data || !Array.isArray(data.laws)) throw new Error("Neispravan format zakoni.json");
+    return { laws: data.laws, napomena: data.napomena || "" };
+  }
+
+  function save(){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }catch(e){
+      showToast("Spremanje nije uspjelo — provjeri postavke preglednika.");
+      console.error(e);
+    }
+  }
+
+  function showToast(msg){
+    const t = document.getElementById("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(showToast._tm);
+    showToast._tm = setTimeout(()=> t.classList.remove("show"), 2200);
+  }
+
+  function escapeHtml(str){
+    const d = document.createElement("div");
+    d.textContent = str == null ? "" : str;
+    return d.innerHTML;
+  }
+
+  function updateView(){
+    const view = activeArticleId ? "reader" : (activeLawId ? "articles" : "laws");
+    document.body.setAttribute("data-view", view);
+  }
+
+  function renderAll(){
+    renderLawList();
+    renderArticleList();
+    renderReader();
+    renderGlobalNote();
+    updateView();
+  }
+
+  function renderGlobalNote(){
+    const box = document.getElementById("global-note-box");
+    const display = document.getElementById("global-note-display");
+    const input = document.getElementById("global-note-input");
+    const note = state.napomena || "";
+    const isAdmin = document.body.getAttribute("data-admin") === "on";
+
+    if(note.trim()){
+      display.textContent = note;
+      display.style.display = "block";
+    }else{
+      display.style.display = "none";
+    }
+    input.value = note;
+    box.style.display = (note.trim() || isAdmin) ? "block" : "none";
+  }
+
+  // ---------- VIEW: LAWS ----------
+  function buildLawCard(law){
+    const div = document.createElement("div");
+    div.className = "list-card";
+    div.innerHTML = `
+      <span class="lc-title-group">
+        <span class="lc-title">${escapeHtml(law.naziv)}</span>
+        <span class="lc-count">${law.clanci.length} čl.</span>
+      </span>
+      <button class="trip-delete-btn no-print law-delete-btn admin-only" title="Obriši zakon">✕</button>
+    `;
+    div.onclick = (e)=>{
+      if(e.target.classList.contains("law-delete-btn")) return;
+      activeLawId = law.id; activeArticleId = null; renderAll();
+    };
+    div.querySelector(".law-delete-btn").onclick = (e)=>{
+      e.stopPropagation();
+      if(confirm(`Obrisati zakon "${law.naziv}" i sve njegove članke (${law.clanci.length})? Ovo se ne može poništiti.`)){
+        state.laws = state.laws.filter(l=>l.id!==law.id);
+        if(activeLawId === law.id){ activeLawId = null; activeArticleId = null; }
+        save(); renderAll();
+        showToast("Zakon obrisan.");
+      }
+    };
+    return div;
+  }
+
+  function renderLawList(){
+    const listEl = document.getElementById("law-list");
+    const q = document.getElementById("search-box").value.trim().toLowerCase();
+    listEl.innerHTML = "";
+
+    if(!q){
+      const laws = state.laws.slice().sort((a,b)=> a.naziv.localeCompare(b.naziv, 'hr'));
+      if(laws.length === 0){
+        listEl.innerHTML = '<div class="empty-note">Još nema dodanih zakona. Dodaj prvi ispod.</div>';
+        return;
+      }
+      laws.forEach(law=> listEl.appendChild(buildLawCard(law)));
+      return;
+    }
+
+    const matchedLaws = state.laws
+      .filter(l => l.naziv.toLowerCase().includes(q))
+      .sort((a,b)=> a.naziv.localeCompare(b.naziv, 'hr'));
+
+    const matchedArticles = [];
+    state.laws.forEach(law=>{
+      law.clanci.forEach(c=>{
+        const hay = `${c.broj} ${c.naslov||""} ${c.tekst}`.toLowerCase();
+        if(hay.includes(q)) matchedArticles.push({ law, article: c });
+      });
+    });
+
+    if(matchedLaws.length === 0 && matchedArticles.length === 0){
+      listEl.innerHTML = '<div class="empty-note">Nema rezultata.</div>';
+      return;
+    }
+
+    if(matchedLaws.length > 0){
+      const h = document.createElement("div");
+      h.className = "section-heading";
+      h.textContent = "Zakoni";
+      listEl.appendChild(h);
+      matchedLaws.forEach(law=> listEl.appendChild(buildLawCard(law)));
+    }
+
+    if(matchedArticles.length > 0){
+      const h = document.createElement("div");
+      h.className = "section-heading";
+      h.textContent = "Članci";
+      listEl.appendChild(h);
+      matchedArticles.forEach(({law, article})=>{
+        const div = document.createElement("div");
+        div.className = "list-card";
+        div.innerHTML = `
+          <span>
+            <span class="lc-title">${article.naslov ? escapeHtml(article.naslov) : "Čl. " + escapeHtml(article.broj)}</span>
+            <div class="lc-sub">Članak ${escapeHtml(article.broj)} · ${escapeHtml(law.naziv)}</div>
+          </span>
+        `;
+        div.onclick = ()=>{
+          activeLawId = law.id;
+          activeArticleId = article.id;
+          document.getElementById("search-box").value = "";
+          renderAll();
+        };
+        listEl.appendChild(div);
+      });
+    }
+  }
+
+  // ---------- VIEW: ARTICLES ----------
+  function renderArticleList(){
+    const titleEl = document.getElementById("articles-law-title");
+    const listEl = document.getElementById("article-list");
+    const law = state.laws.find(l=>l.id===activeLawId);
+    if(!law) return;
+
+    titleEl.textContent = law.naziv;
+    const clanci = law.clanci.slice().sort((a,b)=> a.broj.localeCompare(b.broj, 'hr', {numeric:true}));
+
+    listEl.innerHTML = "";
+    if(clanci.length === 0){
+      listEl.innerHTML = '<div class="empty-note">Ovaj zakon još nema članaka. Dodaj prvi ispod.</div>';
+      return;
+    }
+
+    clanci.forEach(c=>{
+      const div = document.createElement("div");
+      div.className = "list-card";
+      div.innerHTML = `
+        <span>
+          <span class="lc-title">${c.naslov ? escapeHtml(c.naslov) : "Čl. " + escapeHtml(c.broj)}</span>
+          <div class="lc-sub">Članak ${escapeHtml(c.broj)}</div>
+        </span>
+      `;
+      div.onclick = ()=>{ activeArticleId = c.id; renderAll(); };
+      listEl.appendChild(div);
+    });
+  }
+
+  // ---------- VIEW: READER ----------
+  function renderReader(){
+    const contentEl = document.getElementById("reader-content");
+    const law = state.laws.find(l=>l.id===activeLawId);
+    const article = law ? law.clanci.find(c=>c.id===activeArticleId) : null;
+    if(!article){ contentEl.innerHTML = ""; return; }
+
+    contentEl.innerHTML = `
+      <div class="r-law">${escapeHtml(law.naziv)}</div>
+      <h2>${article.naslov ? escapeHtml(article.naslov) : "Čl. " + escapeHtml(article.broj)}</h2>
+      <div class="r-article-no">Članak ${escapeHtml(article.broj)}</div>
+      <div class="r-text">${escapeHtml(article.tekst)}</div>
+      ${article.napomena ? `
+      <div class="r-note">
+        <div class="r-note-label">Napomena</div>
+        <div class="r-note-text">${escapeHtml(article.napomena)}</div>
+      </div>` : ""}
+      ${article.pdf ? `
+      <div class="r-pdf">
+        <a href="${article.pdf.data || article.pdf.file}" target="_blank" rel="noopener">📄 ${escapeHtml(article.pdf.name)} — otvori</a>
+        ${article.pdf.data ? `
+        <a href="${article.pdf.data}" download="${article.pdf.file.replace('postupanja/','')}" class="admin-only pdf-github-link">⬇️ Preuzmi za GitHub (${escapeHtml(article.pdf.file)})</a>` : ""}
+      </div>` : ""}
+      <div class="reader-actions">
+        <button id="edit-article-btn" class="admin-only">Uredi</button>
+        <button id="delete-article-btn" class="danger admin-only">Obriši</button>
+      </div>
+    `;
+    document.getElementById("edit-article-btn").onclick = ()=> openArticleModal(law.id, article.id);
+    document.getElementById("delete-article-btn").onclick = ()=>{
+      if(confirm("Obrisati ovaj članak?")){
+        law.clanci = law.clanci.filter(c=>c.id!==article.id);
+        activeArticleId = null;
+        save(); renderAll();
+        showToast("Članak obrisan.");
+      }
+    };
+  }
+
+  // ---------- MODALS ----------
+  function openModal(html){
+    document.getElementById("modal").innerHTML = html;
+    document.getElementById("overlay").classList.add("show");
+  }
+  function closeModal(){
+    document.getElementById("overlay").classList.remove("show");
+  }
+  document.getElementById("overlay").addEventListener("click", (e)=>{
+    if(e.target.id === "overlay") closeModal();
+  });
+
+  function openLawModal(){
+    openModal(`
+      <h3>Novi zakon</h3>
+      <div class="field">
+        <label>Naziv zakona</label>
+        <input type="text" id="law-naziv" placeholder="npr. Kazneni zakon">
+      </div>
+      <div class="modal-actions">
+        <button id="cancel-btn">Odustani</button>
+        <button class="primary" id="save-btn">Spremi</button>
+      </div>
+    `);
+    document.getElementById("cancel-btn").onclick = closeModal;
+    document.getElementById("save-btn").onclick = ()=>{
+      const naziv = document.getElementById("law-naziv").value.trim();
+      if(!naziv){ showToast("Upiši naziv zakona."); return; }
+      const law = { id: uid(), naziv, clanci: [] };
+      state.laws.push(law);
+      activeLawId = law.id;
+      save(); closeModal(); renderAll();
+      showToast("Zakon dodan.");
+    };
+  }
+
+  function openArticleModal(lawId, articleId){
+    const law = state.laws.find(l=>l.id===lawId);
+    const editing = !!articleId;
+    const article = editing ? law.clanci.find(c=>c.id===articleId) : null;
+
+    openModal(`
+      <h3>${editing ? "Uredi članak" : "Novi članak"}</h3>
+      <div class="field">
+        <label>Broj članka</label>
+        <input type="text" id="art-broj" placeholder="npr. 246" value="${article ? escapeHtml(article.broj) : ""}">
+      </div>
+      <div class="field">
+        <label>Naslov (nije obavezno)</label>
+        <input type="text" id="art-naslov" placeholder="npr. Krađa" value="${article ? escapeHtml(article.naslov||"") : ""}">
+      </div>
+      <div class="field">
+        <label>Tekst / opis članka</label>
+        <textarea id="art-tekst" placeholder="Upiši tekst članka...">${article ? escapeHtml(article.tekst) : ""}</textarea>
+      </div>
+      <div class="field">
+        <label>Napomena (nije obavezno)</label>
+        <textarea id="art-napomena" placeholder="Osobna napomena, primjer iz prakse, podsjetnik...">${article ? escapeHtml(article.napomena||"") : ""}</textarea>
+      </div>
+      <div class="field">
+        <label>PDF — primjer postupanja (nije obavezno)</label>
+        ${article && article.pdf ? `
+        <div class="pdf-current" id="pdf-current-row">
+          📄 ${escapeHtml(article.pdf.name)}
+          <button type="button" id="remove-pdf-btn">Ukloni</button>
+        </div>` : ""}
+        <input type="file" id="art-pdf" accept="application/pdf">
+      </div>
+      <div class="modal-actions">
+        <button id="cancel-btn">Odustani</button>
+        <button class="primary" id="save-btn">Spremi</button>
+      </div>
+    `);
+    let removePdfFlag = false;
+    const removeBtn = document.getElementById("remove-pdf-btn");
+    if(removeBtn){
+      removeBtn.onclick = ()=>{
+        removePdfFlag = true;
+        document.getElementById("pdf-current-row").style.display = "none";
+      };
+    }
+    document.getElementById("cancel-btn").onclick = closeModal;
+    document.getElementById("save-btn").onclick = async ()=>{
+      const broj = document.getElementById("art-broj").value.trim();
+      const naslov = document.getElementById("art-naslov").value.trim();
+      const tekst = document.getElementById("art-tekst").value.trim();
+      const napomena = document.getElementById("art-napomena").value.trim();
+      if(!broj || !tekst){ showToast("Upiši barem broj članka i tekst."); return; }
+
+      const articleId = editing ? article.id : uid();
+      let pdf = (article && article.pdf && !removePdfFlag) ? article.pdf : null;
+      const fileInput = document.getElementById("art-pdf");
+      const file = fileInput.files && fileInput.files[0];
+      if(file){
+        if(file.type !== "application/pdf"){ showToast("Datoteka mora biti PDF."); return; }
+        if(file.size > 6*1024*1024){ showToast("PDF je prevelik — maksimalno cca 6MB."); return; }
+        try{
+          const data = await readFileAsDataUrl(file);
+          pdf = { name: file.name, file: `postupanja/${articleId}.pdf`, data };
+        }catch(err){
+          showToast("Greška pri učitavanju PDF-a."); console.error(err); return;
+        }
+      }
+
+      if(editing){
+        article.broj = broj; article.naslov = naslov; article.tekst = tekst;
+        article.napomena = napomena; article.pdf = pdf;
+      }else{
+        const newArt = { id: articleId, broj, naslov, tekst, napomena, pdf };
+        law.clanci.push(newArt);
+        activeArticleId = newArt.id;
+      }
+      save(); closeModal(); renderAll();
+      showToast(editing ? "Članak ažuriran." : "Članak dodan.");
+    };
+  }
+
+  function readFileAsDataUrl(file){
+    return new Promise((resolve, reject)=>{
+      const r = new FileReader();
+      r.onload = ()=> resolve(r.result);
+      r.onerror = reject;
+      r.readAsDataURL(file);
+    });
+  }
+
+  // ---------- EVENTS ----------
+  document.getElementById("back-to-laws").onclick = ()=>{ activeLawId = null; activeArticleId = null; renderAll(); };
+  document.getElementById("save-global-note-btn").onclick = ()=>{
+    state.napomena = document.getElementById("global-note-input").value;
+    save();
+    renderGlobalNote();
+    showToast("Napomena spremljena.");
+  };
+  document.getElementById("back-to-articles").onclick = ()=>{ activeArticleId = null; renderAll(); };
+  document.getElementById("add-law-btn").onclick = openLawModal;
+  document.getElementById("add-article-btn").onclick = ()=>{
+    if(activeLawId) openArticleModal(activeLawId, null);
+  };
+  document.getElementById("search-box").oninput = ()=>{
+    activeLawId = null;
+    activeArticleId = null;
+    renderAll();
+  };
+
+  document.getElementById("share-btn").onclick = async ()=>{
+    const dataStr = JSON.stringify(state, null, 2);
+    const datum = new Date().toISOString().slice(0,10);
+    const filename = `zbirka-zakona-backup-${datum}.json`;
+    const file = new File([dataStr], filename, {type:"application/json"});
+
+    if(navigator.canShare && navigator.canShare({files:[file]})){
+      try{
+        await navigator.share({
+          files:[file],
+          title:"Zbirka zakona — backup",
+          text:"Backup zakona i članaka."
+        });
+      }catch(err){
+        if(err.name !== "AbortError"){
+          showToast("Dijeljenje nije uspjelo, probaj 'Izvezi (backup)'.");
+          console.error(err);
+        }
+      }
+    }else{
+      showToast("Dijeljenje nije podržano u ovom pregledniku — koristi 'Izvezi (backup)'.");
+    }
+  };
+
+  document.getElementById("export-btn").onclick = ()=>{
+    const blob = new Blob([JSON.stringify(state, null, 2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    const datum = new Date().toISOString().slice(0,10);
+    a.href = url;
+    a.download = `zbirka-zakona-backup-${datum}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast("Backup preuzet.");
+  };
+
+  document.getElementById("export-github-btn").onclick = ()=>{
+    const lightLaws = state.laws.map(law=>({
+      ...law,
+      clanci: law.clanci.map(c=>{
+        const copy = { ...c };
+        if(copy.pdf){ copy.pdf = { name: copy.pdf.name, file: copy.pdf.file }; }
+        return copy;
+      })
+    }));
+    const blob = new Blob([JSON.stringify({ laws: lightLaws, napomena: state.napomena || "" }, null, 2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "zakoni.json";
+    a.click();
+    URL.revokeObjectURL(url);
+
+    const pdfCount = state.laws.reduce((sum,l)=> sum + l.clanci.filter(c=>c.pdf).length, 0);
+    showToast(pdfCount > 0
+      ? `zakoni.json preuzet. Ne zaboravi i posebno preuzeti/uploadati ${pdfCount} PDF datoteka u "postupanja/" folder.`
+      : "zakoni.json preuzet — zamijeni tom datotekom postojeću na GitHubu.");
+  };
+
+  document.getElementById("download-all-pdfs-btn").onclick = async ()=>{
+    const withPdf = [];
+    state.laws.forEach(l=> l.clanci.forEach(c=>{
+      if(c.pdf && c.pdf.data) withPdf.push(c.pdf);
+    }));
+    if(withPdf.length === 0){ showToast("Nema lokalno spremljenih PDF-ova za preuzimanje."); return; }
+    if(!confirm(`Preuzeti ${withPdf.length} PDF datoteka? Preglednik će možda tražiti dopuštenje za više preuzimanja odjednom.`)) return;
+
+    for(const pdf of withPdf){
+      const a = document.createElement("a");
+      a.href = pdf.data;
+      a.download = pdf.file.replace("postupanja/", "");
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      await new Promise(r=> setTimeout(r, 400));
+    }
+    showToast(`Preuzeto ${withPdf.length} PDF datoteka — stavi ih sve u "postupanja/" folder na GitHubu.`);
+  };
+
+  document.getElementById("refresh-published-btn").onclick = async ()=>{
+    if(!confirm("Ovo će odbaciti sve lokalne (neizvezene) izmjene na ovom uređaju i učitati zadnju objavljenu verziju zakoni.json. Nastaviti?")) return;
+    try{
+      const published = await loadPublished();
+      adoptPublished(published);
+      activeLawId = null; activeArticleId = null;
+      renderAll();
+      showToast("Učitana objavljena verzija.");
+    }catch(err){
+      showToast("Nije uspjelo — provjeri da zakoni.json postoji uz index.html.");
+      console.error(err);
+    }
+  };
+
+  document.getElementById("import-btn").onclick = ()=>{
+    document.getElementById("import-input").click();
+  };
+  document.getElementById("import-input").onchange = (e)=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev)=>{
+      try{
+        const parsed = JSON.parse(ev.target.result);
+        if(!parsed.laws) throw new Error("Neispravan format datoteke.");
+        const merge = confirm("Želiš li dodati uvezene zakone postojećima (OK), ili zamijeniti sve podatke (Odustani = zamijeni)?");
+        if(merge){
+          let noviZakoni = 0, noviClanci = 0, preskoceno = 0;
+          parsed.laws.forEach(importedLaw=>{
+            let existing = state.laws.find(l=> l.id === importedLaw.id);
+            if(!existing){
+              existing = state.laws.find(l=> l.naziv.trim().toLowerCase() === importedLaw.naziv.trim().toLowerCase());
+            }
+            if(existing){
+              importedLaw.clanci.forEach(importedArt=>{
+                const jednakChlanak = existing.clanci.some(c=>
+                  c.id === importedArt.id ||
+                  (c.broj.trim().toLowerCase() === importedArt.broj.trim().toLowerCase()
+                    && c.tekst.trim() === importedArt.tekst.trim())
+                );
+                if(jednakChlanak){ preskoceno++; }
+                else{ existing.clanci.push(importedArt); noviClanci++; }
+              });
+            }else{
+              state.laws.push(importedLaw);
+              noviZakoni++;
+              noviClanci += importedLaw.clanci.length;
+            }
+          });
+          showToast(`Uvezeno: ${noviZakoni} novih zakona, ${noviClanci} novih članaka${preskoceno? " ("+preskoceno+" preskočeno, već postoje)": ""}.`);
+          if(parsed.napomena && parsed.napomena.trim()){
+            state.napomena = parsed.napomena;
+          }
+        }else{
+          state.laws = parsed.laws;
+          state.napomena = parsed.napomena || "";
+          showToast("Podaci zamijenjeni.");
+        }
+        activeLawId = null; activeArticleId = null;
+        save(); renderAll();
+      }catch(err){
+        showToast("Greška: datoteka nije valjana.");
+        console.error(err);
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  };
+
+  // ==================================================================
+  // SCHENGEN KALKULATOR (90/180 dana)
+  // ==================================================================
+  const SCHENGEN_KEY = "schengen_trips_v1";
+  let schengenState = { trips: [], owner: "" };
+
+  function loadSchengen(){
+    try{
+      const raw = localStorage.getItem(SCHENGEN_KEY);
+      if(raw){ schengenState = JSON.parse(raw); }
+    }catch(e){ console.error("Greška pri učitavanju Schengen podataka:", e); }
+    if(!schengenState.trips) schengenState.trips = [];
+    if(typeof schengenState.owner !== "string") schengenState.owner = "";
+  }
+
+  function saveSchengen(){
+    try{
+      localStorage.setItem(SCHENGEN_KEY, JSON.stringify(schengenState));
+    }catch(e){
+      showToast("Spremanje nije uspjelo — provjeri postavke preglednika.");
+      console.error(e);
+    }
+  }
+
+  function parseDateStr(str){
+    const [y,m,d] = str.split("-").map(Number);
+    return new Date(y, m-1, d);
+  }
+  function formatDateHr(str){
+    return parseDateStr(str).toLocaleDateString("hr-HR");
+  }
+  function daysInclusive(fromStr, toStr){
+    const a = parseDateStr(fromStr), b = parseDateStr(toStr);
+    return Math.round((b-a)/86400000) + 1;
+  }
+
+  function computeSchengenUsage(){
+    const today = new Date(); today.setHours(0,0,0,0);
+    const windowStart = new Date(today); windowStart.setDate(windowStart.getDate() - 179);
+
+    const trips = schengenState.trips.map(t=>({
+      from: parseDateStr(t.from), to: parseDateStr(t.to)
+    }));
+
+    let used = 0;
+    for(let d = new Date(windowStart); d <= today; d.setDate(d.getDate()+1)){
+      const inside = trips.some(t=> d >= t.from && d <= t.to);
+      if(inside) used++;
+    }
+    return { today, windowStart, used };
+  }
+
+  function usageOnDate(trips, date){
+    const windowStart = new Date(date); windowStart.setDate(windowStart.getDate() - 179);
+    let count = 0;
+    for(let d = new Date(windowStart); d <= date; d.setDate(d.getDate()+1)){
+      if(trips.some(t=> d >= t.from && d <= t.to)) count++;
+    }
+    return count;
+  }
+
+  function nextFreeEntryDate(){
+    const trips = schengenState.trips.map(t=>({
+      from: parseDateStr(t.from), to: parseDateStr(t.to)
+    }));
+    let d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate()+1);
+    for(let i=0; i<3650; i++){
+      const existing = usageOnDate(trips, d);
+      if(existing <= 89) return d;
+      d.setDate(d.getDate()+1);
+    }
+    return null;
+  }
+
+  function renderSchengenSummary(){
+    const { today, windowStart, used } = computeSchengenUsage();
+    document.getElementById("ss-window-start").textContent = windowStart.toLocaleDateString("hr-HR");
+    document.getElementById("ss-used").textContent = used + " / 90 dana";
+    document.getElementById("print-date").textContent = today.toLocaleDateString("hr-HR");
+
+    const statusEl = document.getElementById("ss-status");
+    if(used > 90){
+      const next = nextFreeEntryDate();
+      statusEl.innerHTML = `
+        <div class="ss-alert danger">⚠ Prekoračenje: ${used-90} dan(a) preko dozvoljenih 90 dana!</div>
+        ${next ? `<div class="ss-alert danger">Sljedeći slobodan ulaz: ${next.toLocaleDateString("hr-HR")}</div>` : ""}
+      `;
+    }else if(used === 90){
+      const next = nextFreeEntryDate();
+      statusEl.innerHTML = `
+        <div class="ss-alert danger">Iskorišteno je svih 90 dana — trenutno nema slobodnih dana za ulaz.</div>
+        ${next ? `<div class="ss-alert danger">Sljedeći slobodan ulaz: ${next.toLocaleDateString("hr-HR")}</div>` : ""}
+      `;
+    }else{
+      statusEl.innerHTML = `<div class="ss-alert ok">U granicama — preostalo ${90-used} dan(a) unutar zadnjih 180 dana.</div>`;
+    }
+  }
+
+  function buildTripCard(trip){
+    const div = document.createElement("div");
+    div.className = "list-card";
+    div.innerHTML = `
+      <span>
+        <span class="lc-title">${escapeHtml(formatDateHr(trip.from))} – ${escapeHtml(formatDateHr(trip.to))}</span>
+        <div class="lc-sub">${daysInclusive(trip.from, trip.to)} dana</div>
+      </span>
+      <button class="trip-delete-btn no-print" title="Obriši">✕</button>
+    `;
+    div.onclick = (e)=>{
+      if(e.target.classList.contains("trip-delete-btn")) return;
+      openTripModal(trip.id);
+    };
+    div.querySelector(".trip-delete-btn").onclick = (e)=>{
+      e.stopPropagation();
+      if(confirm("Obrisati ovo putovanje?")){
+        schengenState.trips = schengenState.trips.filter(t=>t.id!==trip.id);
+        saveSchengen(); renderSchengen();
+        showToast("Putovanje obrisano.");
+      }
+    };
+    return div;
+  }
+
+  function renderTripList(){
+    const listEl = document.getElementById("trip-list");
+    listEl.innerHTML = "";
+    const trips = schengenState.trips.slice().sort((a,b)=> a.from.localeCompare(b.from));
+    if(trips.length === 0){
+      listEl.innerHTML = '<div class="empty-note">Još nema unesenih putovanja. Dodaj prvo ispod.</div>';
+      return;
+    }
+    trips.forEach(t=> listEl.appendChild(buildTripCard(t)));
+  }
+
+  function renderSchengen(){
+    renderSchengenSummary();
+    renderTripList();
+  }
+
+  function openTripModal(tripId){
+    const editing = !!tripId;
+    const trip = editing ? schengenState.trips.find(t=>t.id===tripId) : null;
+
+    openModal(`
+      <h3>${editing ? "Uredi putovanje" : "Novo putovanje"}</h3>
+      <div class="field">
+        <label>Datum ulaska</label>
+        <input type="date" id="trip-from" value="${trip ? trip.from : ""}">
+      </div>
+      <div class="field">
+        <label>Datum izlaska</label>
+        <input type="date" id="trip-to" value="${trip ? trip.to : ""}">
+      </div>
+      <div class="modal-actions">
+        <button id="cancel-btn">Odustani</button>
+        <button class="primary" id="save-btn">Spremi</button>
+      </div>
+    `);
+    document.getElementById("cancel-btn").onclick = closeModal;
+    document.getElementById("save-btn").onclick = ()=>{
+      const from = document.getElementById("trip-from").value;
+      const to = document.getElementById("trip-to").value;
+      if(!from || !to){ showToast("Upiši oba datuma."); return; }
+      if(from > to){ showToast("Datum izlaska mora biti isti ili nakon datuma ulaska."); return; }
+
+      if(editing){
+        trip.from = from; trip.to = to;
+      }else{
+        schengenState.trips.push({ id: uid(), from, to });
+      }
+      saveSchengen(); closeModal(); renderSchengen();
+      showToast(editing ? "Putovanje ažurirano." : "Putovanje dodano.");
+    };
+  }
+
+  document.getElementById("add-trip-btn").onclick = ()=> openTripModal(null);
+  document.getElementById("print-btn").onclick = ()=> window.print();
+
+  document.getElementById("delete-all-trips-btn").onclick = ()=>{
+    if(schengenState.trips.length === 0){ showToast("Nema putovanja za brisanje."); return; }
+    if(confirm("Obrisati SVA putovanja? Ovo se ne može poništiti.")){
+      schengenState.trips = [];
+      saveSchengen(); renderSchengen();
+      showToast("Sva putovanja obrisana.");
+    }
+  };
+
+  const ownerInput = document.getElementById("owner-name");
+  ownerInput.oninput = ()=>{
+    schengenState.owner = ownerInput.value;
+    saveSchengen();
+    updatePrintOwner();
+  };
+
+  function updatePrintOwner(){
+    const el = document.getElementById("print-owner");
+    if(schengenState.owner && schengenState.owner.trim()){
+      el.textContent = "Osoba: " + schengenState.owner.trim();
+      el.style.display = "block";
+    }else{
+      el.style.display = "none";
+    }
+  }
+
+  // ---------- APP SWITCH ----------
+  document.querySelectorAll(".app-tab").forEach(btn=>{
+    btn.onclick = ()=>{
+      document.body.setAttribute("data-app", btn.dataset.app);
+      document.querySelectorAll(".app-tab").forEach(b=> b.classList.toggle("active", b===btn));
+    };
+  });
+
+  // ---------- INIT ----------
+  await load();
+  loadSchengen();
+  renderAll();
+  renderSchengen();
+  document.getElementById("owner-name").value = schengenState.owner || "";
+  updatePrintOwner();
+})();
+</script>
+</body>
+</html>
