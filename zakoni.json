@@ -1,49 +1,191 @@
 {
-  "laws": [
-    {
-      "id": "msil1ixt5vo0f7",
-      "naziv": "Zakon o strancima",
-      "clanci": [
-        {
-          "id": "msil3jt5eza85x",
-          "broj": "50. stavak 1.",
-          "naslov": "Odbijanje ulaza",
-          "tekst": "Državljaninu treće zemlje koji ne ispunjava uvjete za ulazak propisane Zakonikom o schengenskim granicama ili Uredbom EU 2018/1240 odbit će se ulazak u Republiku Hrvatsku o čemu Ministarstvo, putem policijske postaje nadležne za kontrolu prelaska državne granice, donosi rješenje.",
-          "napomena": "Rješenje o odbijanju ulaska",
-          "pdf": null
-        },
-        {
-          "id": "msilalb5hjdj94",
-          "broj": "177. stavak 4. - članak 251. stavak 8. točka 29.",
-          "naslov": "Neprijavljivanje kratkotrajnog boravka",
-          "tekst": "Isti nije u zakonskom roku od dva dana od dana ulaska u R. Hrvatsku prijavio svoj kratkotrajni boravak a što je bio dužan učiniti. Isti ušao u R. Hrvatsku dana DATUM na CGP \"IME\".",
-          "napomena": "OPN\nKazna: 50,00e-700,00e\n\nPlaćanje kazne: \n**KARTICOM-2/3 kazne (33,33e);\n **GOTOVINOM-2/3 kazne (33,33e) + troškovi postupka (13,27e)",
-          "pdf": null
-        }
-      ]
-    },
-    {
-      "id": "msl6vyj4l3l8a6",
-      "naziv": "Zakon o sigurnosti prometa na cestama",
-      "clanci": [
-        {
-          "id": "msl6zb4ag2240c",
-          "broj": "238. stavak 1. - članak 238. stavak 8. -VOZAČ; članak 238. stavak 5.-PRAVNA OSOBA/FIZIČKA OSOBA OBRTNIK; članak 238. stavak 6.-ODGOVORNA OSOBA U PRAVNOJ OSOBI",
-          "naslov": "Istek prometne dozvole do 15 dana",
-          "tekst": "VOZAČ: Isti je upravljao navedenim vozilom iako mu je isteklo važenje prometne dozvole do 15 dana s datumom \" DATUM \".\n\nPRAVNA OSOBA (FIZIČKA OSOBA-OBRTNIK): čiji je vozač \"IME i PREZIME\" upravljao O.A./T.A. marke \"UPISATI\" iako je isteklo važenje prometne dozvole do 15 dana s datumom: \"DATUM\".\n\nODGOVORNA OSOBA U PRAVNOJ OSOBI: odgovorna osoba u pravnoj osobi \"X\" čiji je vozač \"IME i PREZIME\" upravljao O.A./T.A. marke \"UPISATI\" iako je isteklo važenje prometne dozvole do 15 dana s datumom: \"DATUM\".",
-          "napomena": "*VOZAČ:  \nIOPP, OPN, NK\nZabrana izlaska prijevoznom sredstvu\nKazna: 90,00e\nPlaćanje kazne: \n**KARTICOM-1/2 (45e)\n**IOPP-rok 3 dana 1/2 kazne (45e)\n**OPN- 2/3 kazne (60e) + troškovi postupka (13,27e)\n\n*PRAVNA OSOBA (FIZIČKA OSOBA-OBRTNIK):\nIspisuje se izvješće o podacima, opis prekršaja i bez upisane novčane kazne te se ne zauzima broj.\nZabrana izlaska prijevoznom sredstvu\nKazna: 660,00e-1.990,00e\n\n*ODGOVORNA OSOBA U PRAVNOJ OSOBI:\nIspisuje se izvješće o podacima, opis prekršaja i bez upisane novčane kazne te se ne zauzima broj.\nZabrana izlaska prijevoznom sredstvu\nKazna: 190,00e-660,00e",
-          "pdf": null
-        },
-        {
-          "id": "msl7y3o5t45m4t",
-          "broj": "238. stavak 1.- članak 238. stavak 7.-VOZAČ; članak 238. stavak 5.-PRAVNA OSOBA/FIZIČKA OSOBA OBRTNIK; članak 238. stavak 6.-ODGOVORNA OSOBA U PRAVNOJ OSOBI",
-          "naslov": "Istek prometne dozvole više od 15 dana",
-          "tekst": "VOZAČ: Isti je upravljao navedenim vozilom iako mu je isteklo važenje prometne dozvole za više od 15 dana s datumom \" DATUM \".\n\nPRAVNA OSOBA (FIZIČKA OSOBA-OBRTNIK): čiji je vozač \"IME i PREZIME\" upravljao O.A./T.A. marke \"UPISATI\" iako je isteklo važenje prometne dozvole za više od 15 dana s datumom: \"DATUM\".\n\nODGOVORNA OSOBA U PRAVNOJ OSOBI: odgovorna osoba u pravnoj osobi \"x\" čiji je vozač \"IME i PREZIME\" upravljao O.A./T.A. marke \"UPISATI\" iako je isteklo važenje prometne dozvole za više od 15 dana s datumom: \"DATUM\".",
-          "napomena": "*VOZAČ:  \nIOPP, OPN, NK\nZabrana izlaska prijevoznom sredstvu\nOduzimanje reg. pločica članak 58. Zakona o policijskim poslovima i ovlastima\nKazna: 260,00e\nPlaćanje kazne: \n**KARTICOM-1/2 (130e)\n**IOPP-rok 3 dana 1/2 kazne\n**OPN- 2/3 kazne (173,33e) + troškovi postupka (13,27e)\n\n*PRAVNA OSOBA (FIZIČKA OSOBA-OBRTNIK):\nIspisuje se izvješće o podacima, opis prekršaja i bez upisane novčane kazne te se ne zauzima broj.\nZabrana izlaska prijevoznom sredstvu\nOduzimanje reg. pločica članak 58. Zakona o policijskim poslovima i ovlastima\nKazna: 660,00e-1.990,00e\n\n*ODGOVORNA OSOBA U PRAVNOJ OSOBI:\nIspisuje se izvješće o podacima, opis prekršaja i bez upisane novčane kazne te se ne zauzima broj.\nZabrana izlaska prijevoznom sredstvu\nOduzimanje reg. pločica članak 58. Zakona o policijskim poslovima i ovlastima\nKazna: 190,00e-660,00e",
-          "pdf": null
-        }
-      ]
-    }
-  ],
-  "napomena": "UPOZORENJE - 300 eura\nPLAĆANJA NA MJESTU POČINJENJA - 390 eura\nOPN ( kazna u rasponu ) - do 1,000 eura / troškovi postupka 13,27 eura\nPN - novčana kazna iznad 1,000 eura / troškovi postupka 66,36 eura\n\nPLAĆANJE KAZNE putem POS uređaja ili IOPP ( 3 dana ) 1/2 novčane kazne\nPLAĆANJE KAZNE GOTOVINOM 2/3 novčane kazne + troškovi postupka\n"
+  "laws": [],
+  "napomena": "",
+  "vozilaPdf": null,
+  "dokumentiPdf": null,
+  "radniRezultati": {
+    "naslov": "2026. god. POSTUPANJA",
+    "kategorije": [
+      {
+        "id": "seed1",
+        "naziv": "L-1",
+        "mjeseci": [
+          2,
+          1,
+          2,
+          null,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "seed2",
+        "naziv": "KD",
+        "mjeseci": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "seed3",
+        "naziv": "PREKRŠAJI",
+        "mjeseci": [
+          10,
+          2,
+          4,
+          6,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "seed4",
+        "naziv": "POTRAGE",
+        "mjeseci": [
+          2,
+          4,
+          8,
+          7,
+          4,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "seed5",
+        "naziv": "ODBIJANJE UL / IZ",
+        "mjeseci": [
+          3,
+          1,
+          2,
+          2,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "seed6",
+        "naziv": "ODBIJANJE IZ H.D.",
+        "mjeseci": [
+          null,
+          null,
+          null,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "seed7",
+        "naziv": "KRIJUMČARENJE",
+        "mjeseci": [
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "seed8",
+        "naziv": "DROGA/ORUŽJE/VOZILA",
+        "mjeseci": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "seed9",
+        "naziv": "KRIVOTVORINE",
+        "mjeseci": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "seed10",
+        "naziv": "ODBIJANJE UL / IZ VOZILU",
+        "mjeseci": [
+          3,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    ]
+  }
 }
