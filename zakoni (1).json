@@ -1,0 +1,234 @@
+{
+  "laws": [
+    {
+      "id": "msf7vsn1w6em47",
+      "naziv": "Zakon o strancima",
+      "clanci": []
+    },
+    {
+      "id": "msf7wcnhq1hofo",
+      "naziv": "Zakon o sigurnosti prometa na cestama",
+      "clanci": [
+        {
+          "id": "mwccojhaxnpvo1",
+          "broj": "Članak 196. Stavak 1. / Članak 196. Stavak 5.",
+          "naslov": "Istek važenja vozačke dozvole",
+          "tekst": "Isti upravljao navedenim vozilom u prometu na cesti iako mu je isteklo važenje vozačke dozvole s datumom: _________ .",
+          "napomena": "KAZNA: 130,00 eura\n*OPN (rok 8 dana, 2/3 kazne + troškovi postupka) \n*NK (na mjestu počinjenja prekršaja, 1/2 kazne ukoliko plaća putem POS-a; kod plaćanja gotovinom IOPP + R-122)\n*OPP (rok tri dana 1/2 kazne)",
+          "pdf": null,
+          "kategorijaId": "kat-vozacke"
+        }
+      ],
+      "kategorije": [
+        {
+          "id": "kat-vozacke",
+          "naziv": "Vozačke dozvole, vozači i kategorije vozila",
+          "ikona": "💳"
+        },
+        {
+          "id": "kat-prometne",
+          "naziv": "Prometne dozvole, registracija i vozila",
+          "ikona": "🚗"
+        },
+        {
+          "id": "kat-pravila",
+          "naziv": "Pravila prometa",
+          "ikona": "🚦"
+        },
+        {
+          "id": "kat-znakovi",
+          "naziv": "Prometni znakovi i signalizacija",
+          "ikona": "🛑"
+        }
+      ]
+    }
+  ],
+  "napomena": "",
+  "vozilaPdf": null,
+  "dokumentiPdf": null,
+  "radniRezultati": {
+    "naslov": "2026. god. POSTUPANJA",
+    "kategorije": [
+      {
+        "id": "mt6uc7jaeg8znt",
+        "naziv": "L-1",
+        "mjeseci": [
+          2,
+          1,
+          2,
+          null,
+          4,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7jaqiyiv1",
+        "naziv": "KD",
+        "mjeseci": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7jabo0ddd",
+        "naziv": "PREKRŠAJI",
+        "mjeseci": [
+          10,
+          2,
+          4,
+          6,
+          2,
+          2,
+          5,
+          2,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7jai3dlqz",
+        "naziv": "POTRAGE",
+        "mjeseci": [
+          2,
+          4,
+          8,
+          7,
+          6,
+          11,
+          9,
+          4,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7ja13fs4p",
+        "naziv": "ODBIJANJE UL / IZ",
+        "mjeseci": [
+          3,
+          1,
+          2,
+          2,
+          1,
+          null,
+          9,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7jagw4se7",
+        "naziv": "ODBIJANJE IZ H.D.",
+        "mjeseci": [
+          null,
+          null,
+          null,
+          2,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7ja33rumt",
+        "naziv": "KRIJUMČARENJE",
+        "mjeseci": [
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7jaygtrip",
+        "naziv": "DROGA/ORUŽJE/VOZILA",
+        "mjeseci": [
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7jamkmztp",
+        "naziv": "KRIVOTVORINE",
+        "mjeseci": [
+          null,
+          null,
+          1,
+          2,
+          1,
+          1,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7jal0vszc",
+        "naziv": "ODBIJANJE UL / IZ VOZILU",
+        "mjeseci": [
+          3,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    ]
+  }
+}
