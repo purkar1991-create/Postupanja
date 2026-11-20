@@ -11,7 +11,7 @@
       "clanci": [
         {
           "id": "mwccojhaxnpvo1",
-          "broj": "Članak 196. Stavak 1. / Članak 196. Stavak 5.",
+          "broj": "196. Stavak 1. / Članak 196. Stavak 5.",
           "naslov": "Istek važenja vozačke dozvole",
           "tekst": "Isti upravljao navedenim vozilom u prometu na cesti iako mu je isteklo važenje vozačke dozvole s datumom: _________ .",
           "napomena": "",
@@ -37,6 +37,24 @@
           "pdf": null,
           "kategorijaId": "kat-vozacke",
           "kazneOd": 30,
+          "kazneDo": null,
+          "bodovi": null,
+          "postupci": [
+            "obvezniPrekrsajniNalog",
+            "obavijest",
+            "novcanaKazna"
+          ]
+        },
+        {
+          "id": "mwot0q0hwoilb5",
+          "broj": "196. Stavak 3. / Članak 196. Stavak 7.",
+          "naslov": "Korištenje mobitela",
+          "tekst": "Isti je za vrijeme upravljanja vozilom u prometu na cesti koristio mobitel na način koji umanjuje mogućnost reagiranja i sigurnog upravljanja vozilom.",
+          "napomena": "",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-vozacke",
+          "kazneOd": 130,
           "kazneDo": null,
           "bodovi": null,
           "postupci": [
