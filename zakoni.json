@@ -436,6 +436,25 @@
           ],
           "pocinitelji": {},
           "zastitnaMjera": "1. Put - 3 mjeseca\n2. Put - 6 mjeseci\n3. Put - 12 mjeseci"
+        },
+        {
+          "id": "mwryvcr5o3i3rz",
+          "broj": "199. Stavak 1. / Članak 199. Stavak 5.",
+          "naslov": "Alkohol 0.5 g/kg-Profesionalni vozač/mladi vozač",
+          "tekst": "Isti je upravljao navedenim vozilom u prometu na cesti pod utjecajem alkohola, izmjerena koncentracija alkohola u organizmu iznosi _____ umanjeno za 0,1 g/kg iznosi _____ g/kg",
+          "napomena": "",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-vozacke",
+          "kazneOd": 90,
+          "kazneDo": null,
+          "bodovi": null,
+          "postupci": [
+            "obavijest",
+            "novcanaKazna"
+          ],
+          "pocinitelji": {},
+          "zastitnaMjera": ""
         }
       ],
       "kategorije": [
