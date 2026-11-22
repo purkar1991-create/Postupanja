@@ -366,7 +366,7 @@
         },
         {
           "id": "mwrx0788u9ea60",
-          "broj": "Članak 199. Stavak 2. / Članak 199. Stavak 7.",
+          "broj": "199. Stavak 2. / Članak 199. Stavak 7.",
           "naslov": "Alkohol 1.0 - 1.5 g/kg",
           "tekst": "Isti je upravljao navedenim vozilom pod utjecajem alkohola budući da je policijski službenik uporabom alkometra Drager kod istoga utvrdio koncentraciju alkohola u organizmu od ____ g/kg umanjeno za 0,1 g/kg iznosi _____ g/kg odnosno miligrama u litri izdahnutog zraka.",
           "napomena": "NEGATIVNI BODOVI: članak 199. stavak 15.  Vozaču motornog vozila se u evidenciju upisuju 4 negativna boda ako je pravomoćnom odlukom o prekršaju proglašen krivim za prekršaj iz stavka 7. ovog članka.",
@@ -396,6 +396,42 @@
           "bodovi": 6,
           "postupci": [
             "prekrsajniNalog",
+            "optuzniPrijedlog"
+          ],
+          "pocinitelji": {},
+          "zastitnaMjera": "1. Put - 3 mjeseca\n2. Put - 6 mjeseci\n3. Put - 12 mjeseci"
+        },
+        {
+          "id": "mwrxy00s9etoj7",
+          "broj": "199. Stavak 2. / Članak 199. Stavak 9.",
+          "naslov": "Upravljanje pod utjecajem droga",
+          "tekst": "Isti je upravljao navedenim vozilom u prometu na cesti pod utjecajem droga ______ budući da je policijski službenik uporabom preliminarnog testa Drager DrugCheck 3000 utvrdio pristunost droge ____ u organizmu.",
+          "napomena": "",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-vozacke",
+          "kazneOd": 1320,
+          "kazneDo": 2650,
+          "bodovi": null,
+          "postupci": [
+            "prekrsajniNalog"
+          ],
+          "pocinitelji": {},
+          "zastitnaMjera": ""
+        },
+        {
+          "id": "mwrybb20gt0hf0",
+          "broj": "282. Stavak 1. / Članak 282. Stavak 9.",
+          "naslov": "Vozač odbija testiranje na alkohol ili drogu",
+          "tekst": "Isti u svojstvu vozača navedenog vozila na zahtjev policijskog službenika odbio podvrgnuti ispitivanju prisutnosti alkohola/droge u organizmu.",
+          "napomena": "Optužni prijedlog uz izdavanje obavijesti + oduzimanje vozila ukoliko je najmanje 2 puta pravomoćno kažnjen.\n\nVozačka dozvola se oduzima na 12 sati uz izdavanje naredbe.\n\nNEGATIVNI BODOVI: NEGATIVNI BODOVI: članak 282. stavak 12.  Vozaču motornog vozila se u evidenciju upisuju 6 negativnih bodova ako je pravomoćnom odlukom o prekršaju proglašen krivim za prekršaj iz stavka 9. ovog članka.",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-vozacke",
+          "kazneOd": 1320,
+          "kazneDo": 2650,
+          "bodovi": 6,
+          "postupci": [
             "optuzniPrijedlog"
           ],
           "pocinitelji": {},
