@@ -1,0 +1,352 @@
+{
+  "laws": [
+    {
+      "id": "msf7vsn1w6em47",
+      "naziv": "Zakon o strancima",
+      "clanci": []
+    },
+    {
+      "id": "msf7wcnhq1hofo",
+      "naziv": "Zakon o sigurnosti prometa na cestama",
+      "clanci": [
+        {
+          "id": "mwccojhaxnpvo1",
+          "broj": "196. Stavak 1. / Članak 196. Stavak 5.",
+          "naslov": "Istek važenja vozačke dozvole",
+          "tekst": "Isti upravljao navedenim vozilom u prometu na cesti iako mu je isteklo važenje vozačke dozvole s datumom: _________ .",
+          "napomena": "",
+          "pdf": null,
+          "kategorijaId": "kat-vozacke",
+          "kazneOd": 130,
+          "kazneDo": null,
+          "bodovi": null,
+          "postupci": [
+            "obvezniPrekrsajniNalog",
+            "obavijest",
+            "novcanaKazna"
+          ],
+          "postupanje": ""
+        },
+        {
+          "id": "mwoq5c9xpjmdxd",
+          "broj": "229. Stavak 1. / Članak 229. Stavak 5.",
+          "naslov": "Nema vozačku dozvolu kod sebe",
+          "tekst": "Isti prilikom upravljanja vozilom u prometu na cesti kod sebe nije imao vozačku dozvolu.",
+          "napomena": "",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-vozacke",
+          "kazneOd": 30,
+          "kazneDo": null,
+          "bodovi": null,
+          "postupci": [
+            "obvezniPrekrsajniNalog",
+            "obavijest",
+            "novcanaKazna"
+          ]
+        },
+        {
+          "id": "mwot0q0hwoilb5",
+          "broj": "196. Stavak 3. / Članak 196. Stavak 7.",
+          "naslov": "Korištenje mobitela",
+          "tekst": "Isti je za vrijeme upravljanja vozilom u prometu na cesti koristio mobitel na način koji umanjuje mogućnost reagiranja i sigurnog upravljanja vozilom.",
+          "napomena": "",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-vozacke",
+          "kazneOd": 130,
+          "kazneDo": null,
+          "bodovi": null,
+          "postupci": [
+            "obvezniPrekrsajniNalog",
+            "obavijest",
+            "novcanaKazna"
+          ]
+        },
+        {
+          "id": "mwqgb5rd8q2r4d",
+          "broj": "289.",
+          "naslov": "Upravljanje pod zabranom",
+          "tekst": "Odabrati počinitelja",
+          "napomena": "Vozač: Optužni prijedlog uz izdavanje obavijesti + oduzimanje vozila ukoliko je najmanje 2 puta pravomoćno kažnjen.",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-vozacke",
+          "kazneOd": null,
+          "kazneDo": null,
+          "bodovi": null,
+          "postupci": [],
+          "pocinitelji": {
+            "vozac": {
+              "odredba": "Članak 289. Stavak 1. / Članak 289. Stavak 4.",
+              "kazneOd": 1320,
+              "kazneDo": 2650,
+              "kazneDodatno": "ili 60 dana zatvora",
+              "bodovi": null,
+              "postupci": [
+                "prekrsajniNalog",
+                "optuzniPrijedlog"
+              ],
+              "opis": "OPIS-ZAŠTITNA MJERA: Isti je upravljao navedenim vozilom za vrijeme dok mu je na snazi zaštitna mjera zabrane upravljanja mot. vozilom _______ kategorije temeljem rješenja prekršajnog suda grad ______, broj _________, datum rješenja _______, pravomoćna _______, datum početka _______, datum svršetka _______.\nOPIS-NAREDBA O ODREĐIVANJU MJERE OPREZA: Isti je upravljao navedenim vozilom za vrijeme dok mu je na snazi mjera opreza zabrane upravljanja mot. vozilom bilo koje kategorije temeljem naredbe o određivanju mjere opreza izdane od ______, broj ________, početak _______, svršetak_______."
+            },
+            "pravna": {
+              "odredba": "Članak 289. Stavak 1. / Članak 289. Stavak 2.",
+              "kazneOd": 660,
+              "kazneDo": 1990,
+              "kazneDodatno": "",
+              "bodovi": null,
+              "postupci": [
+                "prekrsajniNalog"
+              ],
+              "opis": "Prav. osoba ( fizička osoba obrtnik ) čiji je vozač ______ upravljao O.A. / T.A. marke _____ dok mu je na snazi zaštitna mjera zabrane upravljanja mot. vozilom ______ kategorije temeljem rješenja prekršajnog suda grada ______, broj _____, datum rješenja ______, pravomoćna ______, datum početka ______, datum svršetka _____."
+            },
+            "odgovorna": {
+              "odredba": "Članak 289. Stavak 1. / Članak 289. Stavak 3.",
+              "kazneOd": 190,
+              "kazneDo": 660,
+              "kazneDodatno": "",
+              "bodovi": null,
+              "postupci": [
+                "obvezniPrekrsajniNalog"
+              ],
+              "opis": "Odgovorna osoba u pravnoj osobi _______ čiji je vozač ______ upravljao O.A. / T.A. marke ______ dok mu je na snazi zaštitna mjera zabrane upravljanja mot. vozilom _______ kategorije temeljem rješenja prekršajnog suda grada ________, broj _______, datum rješenja _______, pravomoćna _________, datum početka ________, datum svršetka _____."
+            }
+          },
+          "zastitnaMjera": ""
+        },
+        {
+          "id": "mwqgw6aeq02sdt",
+          "broj": "216. Stavak 1. / Članak 216. Stavak 3.",
+          "naslov": "Upravljanje prije stjecanja prava na upravljanje",
+          "tekst": "Isti je upravljao navedenim vozilom u prometu na cesti prije stjecanja prava na upravljanje vozilom bilo koje kategorije.",
+          "napomena": "Optužni prijedlog uz izdavanje obavijesti + oduzimanje vozila ukoliko je najmanje 2 puta pravomoćno kažnjen.",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-vozacke",
+          "kazneOd": 1320,
+          "kazneDo": 2650,
+          "bodovi": null,
+          "postupci": [
+            "prekrsajniNalog",
+            "optuzniPrijedlog"
+          ],
+          "pocinitelji": {},
+          "zastitnaMjera": "1. Put - 3 mjeseca\n2. Put - 6 mjeseci\n3. Put - 12 mjeseci"
+        }
+      ],
+      "kategorije": [
+        {
+          "id": "kat-vozacke",
+          "naziv": "Vozačke dozvole, vozači i kategorije vozila",
+          "ikona": "💳"
+        },
+        {
+          "id": "kat-prometne",
+          "naziv": "Prometne dozvole, registracija i vozila",
+          "ikona": "🚗"
+        },
+        {
+          "id": "kat-pravila",
+          "naziv": "Pravila prometa",
+          "ikona": "🚦"
+        },
+        {
+          "id": "kat-znakovi",
+          "naziv": "Prometni znakovi i signalizacija",
+          "ikona": "🛑"
+        }
+      ]
+    }
+  ],
+  "napomena": "",
+  "vozilaPdf": null,
+  "dokumentiPdf": null,
+  "radniRezultati": {
+    "naslov": "2026. god. POSTUPANJA",
+    "kategorije": [
+      {
+        "id": "mt6uc7jaeg8znt",
+        "naziv": "L-1",
+        "mjeseci": [
+          2,
+          1,
+          2,
+          null,
+          4,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7jaqiyiv1",
+        "naziv": "KD",
+        "mjeseci": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7jabo0ddd",
+        "naziv": "PREKRŠAJI",
+        "mjeseci": [
+          10,
+          2,
+          4,
+          6,
+          2,
+          2,
+          5,
+          2,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7jai3dlqz",
+        "naziv": "POTRAGE",
+        "mjeseci": [
+          2,
+          4,
+          8,
+          7,
+          6,
+          11,
+          9,
+          4,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7ja13fs4p",
+        "naziv": "ODBIJANJE UL / IZ",
+        "mjeseci": [
+          3,
+          1,
+          2,
+          2,
+          1,
+          null,
+          9,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7jagw4se7",
+        "naziv": "ODBIJANJE IZ H.D.",
+        "mjeseci": [
+          null,
+          null,
+          null,
+          2,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7ja33rumt",
+        "naziv": "KRIJUMČARENJE",
+        "mjeseci": [
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7jaygtrip",
+        "naziv": "DROGA/ORUŽJE/VOZILA",
+        "mjeseci": [
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7jamkmztp",
+        "naziv": "KRIVOTVORINE",
+        "mjeseci": [
+          null,
+          null,
+          1,
+          2,
+          1,
+          1,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "id": "mt6uc7jal0vszc",
+        "naziv": "ODBIJANJE UL / IZ VOZILU",
+        "mjeseci": [
+          3,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    ],
+    "godina": 2026,
+    "arhiva": []
+  },
+  "napomenaKazne": ""
+}
