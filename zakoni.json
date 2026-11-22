@@ -132,6 +132,274 @@
           ],
           "pocinitelji": {},
           "zastitnaMjera": "1. Put - 3 mjeseca\n2. Put - 6 mjeseci\n3. Put - 12 mjeseci"
+        },
+        {
+          "id": "mwru6irqvj8h15",
+          "broj": "286.",
+          "naslov": "Poništena vozačka dozvola",
+          "tekst": "Odabrati počinitelja.\nPogledati napomenu.",
+          "napomena": "Optužni prijedlog uz izdavanje obavijesti + oduzimanje vozila ukoliko je najmanje 2 puta pravomoćno kažnjen.\n\nUkoliko vozač nema položeno piše se članak 289. stavak 13..",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-vozacke",
+          "kazneOd": null,
+          "kazneDo": null,
+          "bodovi": null,
+          "postupci": [],
+          "pocinitelji": {
+            "vozac": {
+              "odredba": "Članak 286. Stavak 12. / Članak 286. Stavak 12.",
+              "kazneOd": 1320,
+              "kazneDo": 2650,
+              "kazneDodatno": "ili 60 dana zatvora",
+              "bodovi": null,
+              "postupci": [
+                "prekrsajniNalog",
+                "optuzniPrijedlog"
+              ],
+              "opis": "Isti je upravljao navedenim vozilom u prometu na cesti iako mu je vozačka dozvola poništena zbog negativnih bodova u vremenu od ______ do ______ temeljem rješenja _____ i broja ______."
+            },
+            "pravna": {
+              "odredba": "Članak 289. Stavak 1. / Članak 289. Stavak 2.",
+              "kazneOd": 660,
+              "kazneDo": 1990,
+              "kazneDodatno": "",
+              "bodovi": null,
+              "postupci": [
+                "obavijest"
+              ],
+              "opis": "Pravna osoba / fizička osoba obrtnik čiji je vozač _____ upravljao O.A. / T.A. marke ______ u prometu na cesti dok mu je na snazi zaštitna mjera zabrane upravljanja motornim vozilom ______ kategorije temeljem rješenja Prekršajnog suda _____, broj_______, datum rješenja______, pravomoćna_______, datumo početka_______, svršetak____."
+            },
+            "odgovorna": {
+              "odredba": "Članak 289. Stavak 1. / Članak 289. Stavak 3.",
+              "kazneOd": 190,
+              "kazneDo": 660,
+              "kazneDodatno": "",
+              "bodovi": null,
+              "postupci": [
+                "obavijest"
+              ],
+              "opis": "Odgovorna osoba u pravnoj osobi _____ čiji je vozač _______ upravljao O.A. / T.A. marke ________ dok mu je na snazi zaštitna mjera zabrane upravljanja motornim vozilom ______ kategorije temeljem rješenja Prekršajnog suda ______, broj _____, datum rješenja ______, pravomoćna_____, datum početka______, svršetak _____."
+            }
+          },
+          "zastitnaMjera": "1. Put - 3 mjeseca\n2. Put - 6 mjeseci\n3. Put - 12 mjeseci"
+        },
+        {
+          "id": "mwruv0kszqsy9m",
+          "broj": "238.",
+          "naslov": "Istek prometne dozvole za više od 15 dana",
+          "tekst": "Odabrati počinitelja.\n\nPogledati napomenu.",
+          "napomena": "Oduzimanje registarskih pločica temeljem članka 58. ZPPO.\n\nOSIGURANJE: VOZAČ: Članak 4. Stavak 1. / Članak 65. Stavak 3. ZOOP. KAZNA: 660,00 - 6.630,00 eura. Prekršajni nalog.\n\nOSIGURANJE: PRAVNA OSOBA-FIZIČKA OSOBA OBRTNIK: Članak 4. Stavak 1. / Članak 65. Stavak 1. ZOOP. KAZNA: 660,00 - 6.630,00 eura, \n\nOSIGURANJE: ODGOVORNA OSOBA U PRAVNOJ OSOBI: Članak 4. Stavak 1. / Članak 65. Stavak 2. ZOOP. KAZNA: 130,00-660,00 eura.\n\nZa pravnu osobu-fizičku osobu obrtnik, odgovornu osobu u pravnoj osobi se ispisuje izvješće o počinjenom prekršaju s podacima, opis prekršaja i bez upisane novčane kazne te se ne zauizma broj.",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-prometne",
+          "kazneOd": null,
+          "kazneDo": null,
+          "bodovi": null,
+          "postupci": [],
+          "pocinitelji": {
+            "vozac": {
+              "odredba": "Članak 238. Stavak 1. / Članak 238. Stavak 7.",
+              "kazneOd": 260,
+              "kazneDo": null,
+              "kazneDodatno": "",
+              "bodovi": null,
+              "postupci": [
+                "obvezniPrekrsajniNalog",
+                "obavijest",
+                "novcanaKazna"
+              ],
+              "opis": "Isti je upravljao navedenim vozilom u prometu na cesti iako je isteklo važenje prometne dozvole za više od 15 dana s datumom ____."
+            },
+            "pravna": {
+              "odredba": "Članak 238. Stavak 1. / Članak 238. Stavak 5.",
+              "kazneOd": 660,
+              "kazneDo": 1900,
+              "kazneDodatno": "",
+              "bodovi": null,
+              "postupci": [
+                "obavijest"
+              ],
+              "opis": "Pravna osoba-fizička osoba obrtnik čiji je vozač _____ upravljao O.A. / T.A. marke _____ u prometu na cesti iako je isteklo važenje prometne dozvole za više od 15 dana s datumom _____."
+            },
+            "odgovorna": {
+              "odredba": "Članak 238. Stavak 1. / Članak 238. Stavak 6.",
+              "kazneOd": 190,
+              "kazneDo": 660,
+              "kazneDodatno": "",
+              "bodovi": null,
+              "postupci": [
+                "obavijest"
+              ],
+              "opis": "Odgovorna osoba u pravnoj osobi ____  čiji je vozač _____ upravljao O.A. / T.A. marke _____ u prometu na cesti iako je isteklo važenje prometne dozvole za više od 15 dana s datumom _____."
+            }
+          },
+          "zastitnaMjera": ""
+        },
+        {
+          "id": "mwrvkvqxc98qkr",
+          "broj": "Članak 238.",
+          "naslov": "Istek prometne dozvole do 15 dana",
+          "tekst": "Odabrati počinitelja.\n\nPogledati napomenu.",
+          "napomena": "Za pravnu osobu-fizičku osobu obrtnik, odgovornu osobu u pravnoj osobi se ispisuje izvješće o počinjenom prekršaju s podacima, opis prekršaja i bez upisane novčane kazne te se ne zauizma broj.",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-prometne",
+          "kazneOd": null,
+          "kazneDo": null,
+          "bodovi": null,
+          "postupci": [],
+          "pocinitelji": {
+            "vozac": {
+              "odredba": "Članak 238. Stavak 1. / Članak 238. Stavak 8.",
+              "kazneOd": 90,
+              "kazneDo": null,
+              "kazneDodatno": "",
+              "bodovi": null,
+              "postupci": [
+                "obvezniPrekrsajniNalog",
+                "obavijest",
+                "novcanaKazna"
+              ],
+              "opis": "Isti je upravljao vozilom u prometu na cesti ako je isteklo važenje prometne dozvole do 15 dana s datumom _____."
+            },
+            "pravna": {
+              "odredba": "Članak 238. Stavak 1. / Članak 238. Stavak 5.",
+              "kazneOd": 660,
+              "kazneDo": 1990,
+              "kazneDodatno": "",
+              "bodovi": null,
+              "postupci": [
+                "obavijest"
+              ],
+              "opis": "Pravna osoba-fizička osoba obrtnik čiji je vozač _____ upravljao O.A. / T.A. marke _____ u prometu na cesti iako je isteklo važenje prometne dozvole do 15 dana s datumom _____."
+            },
+            "odgovorna": {
+              "odredba": "Članak 238- Stavak 1. / Članak 238. Stavak 6-",
+              "kazneOd": 190,
+              "kazneDo": 660,
+              "kazneDodatno": "",
+              "bodovi": null,
+              "postupci": [
+                "obavijest"
+              ],
+              "opis": "Odgovorna osoba u pravnoj osobi ____  čiji je vozač _____ upravljao O.A. / T.A. marke _____ u prometu na cesti iako je isteklo važenje prometne dozvole do 15 dana s datumom _____."
+            }
+          },
+          "zastitnaMjera": ""
+        },
+        {
+          "id": "mwrvtvumb8miem",
+          "broj": "242. Stavak 3. / Članak 242. Stavak 5.",
+          "naslov": "Vozač kod sebe nema važeću prometnu dozvolu",
+          "tekst": "Isti kod sebe prilikom upravljanja navedenim vozilom u prometu na cesti nije imao važeću prometnu dozvolu za vozilo kojim upravlja.",
+          "napomena": "",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-prometne",
+          "kazneOd": 30,
+          "kazneDo": null,
+          "bodovi": null,
+          "postupci": [
+            "obvezniPrekrsajniNalog",
+            "obavijest",
+            "novcanaKazna"
+          ],
+          "pocinitelji": {},
+          "zastitnaMjera": ""
+        },
+        {
+          "id": "mwrvwyqyeq0q17",
+          "broj": "241. Stavak 1. / Članak 241. Stavak 7.",
+          "naslov": "Izvozne registarske pločice",
+          "tekst": "Isti izvozi O.A. / T.A. iz EU, EGP-a u inozemstvo  a da pri tome ne posjeduje odgovarajuće izvozne registarske pločice.",
+          "napomena": "",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-prometne",
+          "kazneOd": 260,
+          "kazneDo": null,
+          "bodovi": null,
+          "postupci": [
+            "obvezniPrekrsajniNalog",
+            "novcanaKazna"
+          ],
+          "pocinitelji": {},
+          "zastitnaMjera": ""
+        },
+        {
+          "id": "mwrw5nuy00o8tc",
+          "broj": "247. Stavak 1. / Članak 247. Stavak 4.",
+          "naslov": "Strano vozilo bez prometne dozvole",
+          "tekst": "Isti je upravljao navedenim vozilom u prometu na cesti registriranim izvan teritorija Republike Hrvatske, vozilo registrirano u ______ iako je isteklo važenje prometne dozvole s datumom _____.",
+          "napomena": "Ukoliko nema kod sebe prometnu dozvolu isti članak.",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-prometne",
+          "kazneOd": 260,
+          "kazneDo": null,
+          "bodovi": null,
+          "postupci": [
+            "obvezniPrekrsajniNalog",
+            "novcanaKazna"
+          ],
+          "pocinitelji": {},
+          "zastitnaMjera": ""
+        },
+        {
+          "id": "mwrwdhci0tky4j",
+          "broj": "199. Stavak 2. / Članak 199. Stavak 6.",
+          "naslov": "Alkohol 0.5-1.0 g/kg",
+          "tekst": "Isti je upravljao navedenim vozilom pod utjecajem alkohola budući da je policijski službenik uporabom alkometra Drager kod istoga utvrdio koncentraciju alkohola u organizmu od ____ g/kg umanjeno za 0,1 g/kg iznosi _____ g/kg odnosno miligrama u litri izdahnutog zraka.",
+          "napomena": "NEGATIVNI BODOVI: članak 199. stavak 14.  Vozaču motornog vozila se u evidenciju upisuju 3 negativna boda ako je pravomoćnom odlukom o prekršaju proglašen krivim za prekršaj iz stavka 6. ovog članka.",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-vozacke",
+          "kazneOd": 390,
+          "kazneDo": 660,
+          "bodovi": 3,
+          "postupci": [
+            "obvezniPrekrsajniNalog"
+          ],
+          "pocinitelji": {},
+          "zastitnaMjera": "1. Put - 1 mjesec\n2. Put - 3 mjeseca\n3. Put - 6 mjeseci"
+        },
+        {
+          "id": "mwrx0788u9ea60",
+          "broj": "Članak 199. Stavak 2. / Članak 199. Stavak 7.",
+          "naslov": "Alkohol 1.0 - 1.5 g/kg",
+          "tekst": "Isti je upravljao navedenim vozilom pod utjecajem alkohola budući da je policijski službenik uporabom alkometra Drager kod istoga utvrdio koncentraciju alkohola u organizmu od ____ g/kg umanjeno za 0,1 g/kg iznosi _____ g/kg odnosno miligrama u litri izdahnutog zraka.",
+          "napomena": "NEGATIVNI BODOVI: članak 199. stavak 15.  Vozaču motornog vozila se u evidenciju upisuju 4 negativna boda ako je pravomoćnom odlukom o prekršaju proglašen krivim za prekršaj iz stavka 7. ovog članka.",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-vozacke",
+          "kazneOd": 660,
+          "kazneDo": 1990,
+          "bodovi": 4,
+          "postupci": [
+            "prekrsajniNalog"
+          ],
+          "pocinitelji": {},
+          "zastitnaMjera": "1. Put - 2 mjeseca\n2. Put - 6 mjeseca\n3. Put - 9 mjeseci"
+        },
+        {
+          "id": "mwrxasjo0x47dg",
+          "broj": "199. Stavak 2. / Članak 199. Stavak 8.",
+          "naslov": "Alkohol iznad 1.5 g/kg",
+          "tekst": "Isti je upravljao navedenim vozilom pod utjecajem alkohola budući da je policijski službenik uporabom alkometra Drager kod istoga utvrdio koncentraciju alkohola u organizmu od ____ g/kg umanjeno za 0,1 g/kg iznosi _____ g/kg odnosno miligrama u litri izdahnutog zraka.",
+          "napomena": "NEGATIVNI BODOVI: članak 199. stavak 16.  Vozaču motornog vozila se u evidenciju upisuju 6 negativnih bodova ako je pravomoćnom odlukom o prekršaju proglašen krivim za prekršaj iz stavka 8. i 9. ovog članka.\n\nOptužni prijedlog uz izdavanje obavijesti + oduzimanje vozila ukoliko je najmanje 2 puta pravomoćno kažnjen.",
+          "postupanje": "",
+          "pdf": null,
+          "kategorijaId": "kat-vozacke",
+          "kazneOd": 1320,
+          "kazneDo": 2650,
+          "bodovi": 6,
+          "postupci": [
+            "prekrsajniNalog",
+            "optuzniPrijedlog"
+          ],
+          "pocinitelji": {},
+          "zastitnaMjera": "1. Put - 3 mjeseca\n2. Put - 6 mjeseci\n3. Put - 12 mjeseci"
         }
       ],
       "kategorije": [
